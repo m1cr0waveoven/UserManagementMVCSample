@@ -1,0 +1,11 @@
+﻿ID,Username,Password,Lastname,Firstname,DateOfBirth,PlaceOfBirth,Residence
+1,szabo123,12345,Szabo,Eva,1989. 06. 12.,Budapest,Budapest
+2,kovacs456,pass456,Kovacs,Bela,1992.02.25,Debrecen,Szeged
+3,nagy789,pass789,Nagy,Peter,1985.12.05,Szeged,Budapest
+4,toth321,pass321,Toth,Maria,1991.04.18,Gyor,Pecs
+5,kis654,pass654,Kis,Andras,1998.09.30,Miskolc,Szeged
+6,horvath987,pass987,Horvath,Katalin,1993.11.22,Szombathely,Budapest
+7,szekely654,pass654,Szekely,Lajos,1990.07.08,Eger,Debrecen
+8,balazs123,pass123,Balazs,Agnes,1987.03.15,Pecs,Budapest
+9,szilagyi999,pass999,Szilagyi,David,1995.10.10,Nyiregyhaza,Budapest
+10,gyurko789,pass789,Gyurko,Judit,1992.08.28,Kecskemet,Szeged

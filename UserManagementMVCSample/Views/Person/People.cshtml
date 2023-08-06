@@ -1,0 +1,56 @@
+﻿@using Kendo.Mvc.UI;
+@model PersonModel
+@{
+	ViewData["Title"] = "Felhasználók";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+	<div class="card-header">
+		<h1>Felhasználók adatai</h1>
+	</div>
+	<div class="card-body md-3">
+		@(
+			Html.Kendo().Grid<PersonModel>()
+			.Name("grid")
+			.Columns(columns =>
+			{
+				columns.Bound(p => p.ID).Filterable(ftb => ftb.Cell(cell => cell.ShowOperators(false))).ClientTemplate(
+				$"<a href='{Url.Action("Details", "Person")}/#=ID#' target='_blank'>#=ID#</a>"
+				).Width(140);
+				columns.Bound(p => p.Username).Width(190).Filterable(ftb => ftb.Cell(cell =>
+				{
+					cell.MinLength(3);
+					cell.Operator("contains").SuggestionOperator(FilterType.Contains);
+				}));
+				columns.Bound(p => p.Lastname);
+				columns.Bound(p => p.Firstname);
+				columns.Bound(p => p.DateOfBirth).Format("{0:yyyy.MM.dd}");
+				columns.Bound(p => p.PlaceOfBirth);
+				columns.Bound(p => p.Residence);
+				columns.Command(command =>
+				{
+					command.Custom("Megnyitás").Click("viewDetails");
+				}).Title("Megnyitás").Width(180);
+			})
+			.Groupable()
+			.Selectable()
+			.Sortable()
+			.Scrollable()
+			.Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+			.DataSource(dataSource => dataSource
+			.Ajax()
+			.Read(read => read.Action("People_Read", "Grid"))
+			)
+			)
+	</div>
+	<div class="card-footer"></div>
+</div>
+
+<script>
+	function viewDetails(e) {
+		e.preventDefault();
+		var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+		window.open('@Url.Action("Details", "Person")' + '/' + dataItem.ID, '_blank');
+	}
+</script>
